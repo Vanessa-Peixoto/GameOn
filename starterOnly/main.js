@@ -13,77 +13,23 @@ function closeForm(btn) {
 }
 
 
-// Function qui permet de valider les champs pour soumettre le formulaire
-/*function validateForm() {
-
-    let form = document.querySelector('form')
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-
-        const name = document.getElementById('first')
-        
-        const nameValue = name.value
-        
-        if(nameValue === '' || nameValue.length < 2) {
-
-            let message = document.createElement('p')
-            message.textContent = 'nom pas valide'
-            
-
-            let span = document.querySelector('.formData #first')
-
-            span.after(message)
-        }
-
-        const lastName = document.getElementById('last')
-        const lastNameValue = lastName.value
-        if(lastNameValue === '' && lastNameValue.length < 2) {
-            console.log('pas ok')
-        }
-
-        
-        const email = document.getElementById('email')
-        const emailValue = email.value
-        let emailRegex = new RegExp('[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+')
-
-        if(emailValue !== emailRegex) {
-            let e = document.createElement('p')
-            e.textContent = 'email pas valide'
-
-            let element = document.querySelector('#email')
-            element.after(e)
-        }
-
-        const birthdate = document.getElementById('birthdate')
-        const birthdateValue = birthdate.value
-
-        const quantityTournament = document.getElementById('quantity')
-        const quantityTournamentValue = quantityTournament.value
-        if(quantityTournamentValue === '') {
-            console.log('pas ok')
-        }
-
-        const tournamentLocation = document.querySelectorAll('.checkbox-input')
-        for(let i = 0; i <tournamentLocation.length; i++){
-            
-            if(tournamentLocation[i].checked) {
-                location = tournamentLocation[i].value
-                console.log(location)
-            }
-            break
-        }
-        console.log('isvalid')
-        return true
-
-    })
-
-    //Actionner le btn submit et faire apparaitre une nouvelle page
-}*/
-
 //function qui permet de gerer les erreurs
-    //ajouter des parametres à la fonction
-    // envoi un message à l'utilisateur avec coloration des inputs
+function showErrorMessage(index,message) {
 
+    let formData = document.querySelectorAll('.formData')
+
+        formData[index].setAttribute('data-error', message)
+        formData[index].setAttribute('data-error-visible', 'true')
+        isValid = false 
+}
+
+function removeError(index) {
+
+    let formData = document.querySelectorAll('.formData')
+
+        formData[index].removeAttribute('data-error')
+        formData[index].setAttribute('data-error-visible', 'false')
+}
 
 
 //function qui engendre confirmation inscription
@@ -293,18 +239,122 @@ function initForm() {
     })
 }
 
-
-
-
 function validate() {
-     console.log('validate')
-    const isValid = true
 
-    if (isValid) {
+    let isValid = true
+
+    //Tester name
+
+    const name = document.getElementById('first')
+    const nameValue = name.value
+
+    if(nameValue === '' || nameValue.length < 2) {
+        //message erreur
+        errorMessage(0, 'Prénom pas ok')
+
+    } else {
+        removeError(0)
+    }
+
+    //tester lastname
+
+    const lastName = document.getElementById('last')
+    const lastNameValue = lastName.value
+
+    if(lastNameValue === '' || lastNameValue.length < 2) {
+        //message erreur
+        errorMessage(1, 'Nom pas ok')
+
+    } else {
+        removeError(1)
+    }
+
+    //Tester email
+
+    const email = document.getElementById('email')
+    const emailValue = email.value
+    const emailRegex = new RegExp("[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+")
+
+    if(emailRegex.test(emailValue) === false) {
+
+        errorMessage(2,'email pas ok')
+
+    } else {
+        removeError(2)
+    }
+
+    //tester birthdate
+
+    const birthdate = document.getElementById('birthdate')
+    const birthdateValue = birthdate.value
+
+    if(birthdateValue === '') {
+        
+        errorMessage(3,'date de naissance pas ok')
+
+    } else {
+        formData[3].removeAttribute('data-error')
+        formData[3].setAttribute('data-error-visible', 'false')
+    }
+
+    //tester tournoi participer
+
+    const quantityTournament = document.getElementById('quantity')
+    const quantityTournamentValue = quantityTournament.value
+
+    if(quantityTournamentValue === '') {
+        
+        errorMessage(4,'nbr tournoi pas ok')
+
+    } else {
+        formData[4].removeAttribute('data-error')
+        formData[4].setAttribute('data-error-visible', 'false')
+    }
+
+    //tester localisation tournoi
+
+    const tournamentLocation = document.querySelectorAll('.checkbox-input[type="radio"]')
+
+
+    let isChecked = false
+    for(let i = 0; i < tournamentLocation.length; i++){
+        
+        if(tournamentLocation[i].checked) {
+            isChecked = true
+            console.log('ischecked')
+            break
+        }
+    }
+
+    if(isChecked === false) {
+        let formData = document.querySelectorAll('.formData')
+        formData[5].setAttribute('data-error', 'tournoi participe pas valide')
+        formData[5].setAttribute('data-error-visible', 'true')
+        isValid = false
+    }
+
+    console.log('continue')
+   
+    //tester acceptation conditions
+
+    const cgu = document.querySelectorAll('.checkbox-input[type="checkbox"]')
+
+    if(cgu[0].checked) {
+        isChecked = true
+        console.log('ok')
+    } else {
+        let formData = document.querySelectorAll('.formData')
+        formData[6].setAttribute('data-error', 'cocher case')
+        formData[6].setAttribute('data-error-visible', 'true')
+        isValid = false
+    }
+
+
+    if (isValid === true) {
         confirmeForm()
     }
 
-    return false
+    return isValid
 }
 
 
