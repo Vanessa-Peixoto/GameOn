@@ -1,21 +1,21 @@
 // Function show error message
-function showErrorMessage(index,message) {
-    
+function showErrorMessage(element,message) {
+
     //Select element
-    let formData = document.querySelectorAll('.formData')
+    let formData = element.closest('.formData')
 
     //Set attribute in the element and add message if the form is not valid
-    formData[index].setAttribute('data-error', message)
-    formData[index].setAttribute('data-error-visible', 'true')
+    formData.setAttribute('data-error', message)
+    formData.setAttribute('data-error-visible', 'true')
 }
 
 // Function remove error message
-function removeError(index) {
-
+function removeError(element) {
+    
     //Select element
-    let formData = document.querySelectorAll('.formData')
+    let formData = element.closest('.formData')
 
     //Remove attribute when form is valid
-    formData[index].removeAttribute('data-error')
-    formData[index].setAttribute('data-error-visible', 'false')
+    formData.removeAttribute('data-error')
+    formData.setAttribute('data-error-visible', 'false')
 }

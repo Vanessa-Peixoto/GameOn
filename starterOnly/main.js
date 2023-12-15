@@ -212,40 +212,97 @@ function initialForm() {
     })
 }
 
+function verifyFields() {
+    const firstname = document.getElementById('first')
+    const lastname = document.getElementById('last')
+    const email = document.getElementById('email')
+    const birthdate = document.getElementById('birthdate')
+    const quantityTournament = document.getElementById('quantity')
+
+    firstname.addEventListener('change', (e) => {
+        checkName(e.target, 'ggggg')
+    })
+
+    lastname.addEventListener('change', (e) => {
+        checkName(e.target, 'fffgfgfgfgfg')
+    })
+
+    email.addEventListener('change', (e) => {
+        let emailValue = e.target.value
+        const emailRegex = new RegExp("[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+")
+        if(emailRegex.test(emailValue) === false) {
+            //error message
+            showErrorMessage(2, 'Veuillez saisir une adresse mail valide')
+        } else {
+            //remove error when it's ok
+            removeError(2)
+        }
+    })
+
+    birthdate.addEventListener('change', (e) => {
+        let birthdateValue = e.target.value
+        if(birthdateValue === "") {
+            //error message
+            showErrorMessage(3, 'Vous devez entrer votre date de naissance')
+        } else {
+            //remove error when it's ok
+            removeError(3)
+        }
+    })
+
+    quantityTournament.addEventListener('change', (e) => {
+        let quantityTournamentValue = e.target.value
+        if(quantityTournamentValue === '') {
+            //error message
+            showErrorMessage(4, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez')
+        } else {
+            //remove error when it's ok
+            removeError(4)
+        }
+    })
+}
+
+function checkName(element, message) {
+    //Select firstname element
+
+    let toto = true
+
+    let nameValue = element.value
+
+    if(nameValue === '' || nameValue.length < 2) {
+        //error message
+        toto = false
+        showErrorMessage(element, message)
+    } else {
+        //remove error when it's ok
+        removeError(element)
+    }
+    return toto
+}
+
 //Function validate form
 function validate() {
 
     //Create variable which indicate that the form is valid
     let isValid = true
 
-    //Select firstname element and value
-    const name = document.getElementById('first')
-    const nameValue = name.value
+    const lastname = document.getElementById('last')
+    isValid = checkName(lastname, 'ddddddd')
 
-    //Check value
-    if(nameValue === '' || nameValue.length < 2) {
+
+    //Select lastname element
+   
+
+    let lastnameValue = lastname.value
+    if(lastnameValue === '' || lastnameValue.length < 2) {
         //error message
         isValid = false
-        showErrorMessage(0, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom')
-    } else {
-        //remove error when it's ok
-        removeError(0)
-    }
-
-    //Select lastname element and value
-    const lastName = document.getElementById('last')
-    const lastNameValue = lastName.value
-
-    //Check value
-    if(lastNameValue === '' || lastNameValue.length < 2) {
-        //error massage
-        isValid = false
-        showErrorMessage(1, 'Veuillez entrer 2 caractères ou plus pour le champ du nom')
+        showErrorMessage(1, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom')
     } else {
         //remove error when it's ok
         removeError(1)
     }
-
+ 
     //Select email element and value
     const email = document.getElementById('email')
     const emailValue = email.value
@@ -325,9 +382,10 @@ function validate() {
         //call the function confirmeForm with the registration message
         confirmeForm()
     }
-    console.log(nameValue, lastNameValue, emailValue, birthdateValue, quantityTournamentValue, cgu[0].checked)
+    console.log(nameValue, lastnameValue, emailValue, birthdateValue, quantityTournamentValue, tournamentLocation.value, cgu[0].checked)
     return isValid
 }
 
 //init the function
 closeForm(document.querySelector('.close'))
+verifyFields()
