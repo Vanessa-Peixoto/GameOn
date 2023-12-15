@@ -12,365 +12,322 @@ function closeForm(btn) {
     })
 }
 
-
-//function qui permet de gerer les erreurs
-function showErrorMessage(index,message) {
-
-    let formData = document.querySelectorAll('.formData')
-
-        formData[index].setAttribute('data-error', message)
-        formData[index].setAttribute('data-error-visible', 'true')
-        isValid = false 
-}
-
-function removeError(index) {
-
-    let formData = document.querySelectorAll('.formData')
-
-        formData[index].removeAttribute('data-error')
-        formData[index].setAttribute('data-error-visible', 'false')
-}
-
-
-//function qui engendre confirmation inscription
+// Function to confirmate the form
 function confirmeForm() {
-    //Sélectionne l'élement dont j'ai besoin pour l'affichage
+
+    //Select element
     const modal = document.querySelector('.content')
 
-    //Insère ma nouvelle div dans mon formulaire
+    //Add new div with confirmation message to the inscription
     modal.innerHTML = getSuccessFullHTMLMessage()
 
+    //Call function closeForm to close the div
     closeForm(document.querySelector('.close'))
     closeForm(document.querySelector('.btn-submit'))
-    initForm()
+
+    //Call function initialForm to reset the form
+    initialForm()
 }
 
+//Function create registration message
 function getSuccessFullHTMLMessage() {
 
+    //Create new div with registration message
     const div = `<span class="close"></span>
-                 <div class="modal-body">
-                <p> Merci pour votre inscription</p>
-                <input
-                    class="btn-submit"
-                    type="submit"
-                    class="button"
-                    value="Fermer"
-                />
-            </div>`
+                <div class="modal-body">
+                    <p>Merci pour votre inscription</p>
+                    <input
+                        class="btn-submit"
+                        type="submit"
+                        class="button"
+                        value="Fermer"
+                    />
+                </div>`
 
+    //Return div
     return div
 }
 
+//Function create initial form
 function getInitialForm() {
 
-    console.log("fonction get form")
-
+    //Create new div with the init form
     const div = `
-          <span class="close"></span>
-          <div class="modal-body">
+        <span class="close"></span>
+        <div class="modal-body">
             <form
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate()"
-            >
-              <div
-                class="formData">
-                <label for="first">Prénom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label for="last">Nom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label for="email">E-mail</label><br>
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label for="birthdate">Date de naissance</label><br>
-                <input
-                  class="text-control"
-                  type="date"
-                  id="birthdate"
-                  name="birthdate"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-              </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location1"
-                  name="location"
-                  value="New York"
-                />
-                <label class="checkbox-label" for="location1">
-                  <span class="checkbox-icon"></span>
-                  New York</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location2"
-                  name="location"
-                  value="San Francisco"
-                />
-                <label class="checkbox-label" for="location2">
-                  <span class="checkbox-icon"></span>
-                  San Francisco</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location3"
-                  name="location"
-                  value="Seattle"
-                />
-                <label class="checkbox-label" for="location3">
-                  <span class="checkbox-icon"></span>
-                  Seattle</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location4"
-                  name="location"
-                  value="Chicago"
-                />
-                <label class="checkbox-label" for="location4">
-                  <span class="checkbox-icon"></span>
-                  Chicago</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location5"
-                  name="location"
-                  value="Boston"
-                />
-                <label class="checkbox-label" for="location5">
-                  <span class="checkbox-icon"></span>
-                  Boston</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location6"
-                  name="location"
-                  value="Portland"
-                />
-                <label class="checkbox-label" for="location6">
-                  <span class="checkbox-icon"></span>
-                  Portland</label
-                >
-              </div>
+              onsubmit="return validate()">
+                <div class="formData">
+                    <label for="first">Prénom</label><br>
+                    <input
+                        class="text-control"
+                        type="text"
+                        id="first"
+                        name="first"/><br>
+                </div>
+                <div class="formData">
+                    <label for="last">Nom</label><br>
+                    <input
+                        class="text-control"
+                        type="text"
+                        id="last"
+                        name="last"/><br>
+                </div>
+                <div class="formData">
+                    <label for="email">E-mail</label><br>
+                    <input
+                        class="text-control"
+                        type="email"
+                        id="email"
+                        name="email"/><br>
+                </div>
+                <div class="formData">
+                    <label for="birthdate">Date de naissance</label><br>
+                    <input
+                        class="text-control"
+                        type="date"
+                        id="birthdate"
+                        name="birthdate"/><br>
+                </div>
+                <div class="formData">
+                    <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                    <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                </div>
+                <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+                <div class="formData">
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location1"
+                        name="location"
+                        value="New York"/>
+                    <label class="checkbox-label" for="location1">
+                        <span class="checkbox-icon"></span>
+                        New York</label>
 
-              <div
-                class="formData">
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location2"
+                        name="location"
+                        value="San Francisco"/>
+                    <label class="checkbox-label" for="location2">
+                        <span class="checkbox-icon"></span>
+                        San Francisco</label>
+
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location3"
+                        name="location"
+                        value="Seattle"/>
+                    <label class="checkbox-label" for="location3">
+                        <span class="checkbox-icon"></span>
+                        Seattle</label>
+
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location4"
+                        name="location"
+                        value="Chicago"/>
+                    <label class="checkbox-label" for="location4">
+                        <span class="checkbox-icon"></span>
+                        Chicago</label>
+
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location5"
+                        name="location"
+                        value="Boston"/>
+                    <label class="checkbox-label" for="location5">
+                        <span class="checkbox-icon"></span>
+                        Boston</label>
+
+                    <input
+                        class="checkbox-input"
+                        type="radio"
+                        id="location6"
+                        name="location"
+                        value="Portland"/>
+                    <label class="checkbox-label" for="location6">
+                        <span class="checkbox-icon"></span>
+                        Portland</label>
+                </div>
+
+                <div class="formData">
+                    <input
+                        class="checkbox-input"
+                        type="checkbox"
+                        id="checkbox1"
+                        checked/>
+                    <label class="checkbox2-label" for="checkbox1" required>
+                        <span class="checkbox-icon"></span>
+                        J'ai lu et accepté les conditions d'utilisation.
+                    </label>
+                    <br>
+                    <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                    <label class="checkbox2-label" for="checkbox2">
+                        <span class="checkbox-icon"></span>
+                        Je souhaite être prévenu des prochains évènements.
+                    </label>
+                    <br>
+                </div>
                 <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
-                />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
-                </label>
-                <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
-                </label>
-                <br>
-              </div>
-              <input
                 class="btn-submit"
                 type="submit"
                 class="button"
-                value="C'est parti"
-              />
+                value="C'est parti"/>
             </form>
-          </div>
         </div>
-    ` 
+    </div>` 
     
+    //Select element
     let modal = document.querySelector('.content')
 
+    //Insert new div (with the initial form) in the HTML
     modal.innerHTML = div
+
+    //Call the function closeForm to close form
     closeForm(document.querySelector('.close'))
 
+    //Return new div with the initial form
     return div
-
 }
 
-function initForm() {
-    let btnSubscribe = document.querySelector('.btn-signup')
-    console.log('fonction initform')
+//Function reset form after registration
+function initialForm() {
 
+    //Select element
+    let btnSubscribe = document.querySelector('.btn-signup')
+
+    //Add listener in btn signup
     btnSubscribe.addEventListener('click', () => {
+        //Call function initial form
         getInitialForm()
     })
 }
 
+//Function validate form
 function validate() {
 
+    //Create variable which indicate that the form is valid
     let isValid = true
 
-    //Tester name
-
+    //Select firstname element and value
     const name = document.getElementById('first')
     const nameValue = name.value
 
+    //Check value
     if(nameValue === '' || nameValue.length < 2) {
-        //message erreur
-        errorMessage(0, 'Prénom pas ok')
-
+        //error message
+        isValid = false
+        showErrorMessage(0, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom')
     } else {
+        //remove error when it's ok
         removeError(0)
     }
 
-    //tester lastname
-
+    //Select lastname element and value
     const lastName = document.getElementById('last')
     const lastNameValue = lastName.value
 
+    //Check value
     if(lastNameValue === '' || lastNameValue.length < 2) {
-        //message erreur
-        errorMessage(1, 'Nom pas ok')
-
+        //error massage
+        isValid = false
+        showErrorMessage(1, 'Veuillez entrer 2 caractères ou plus pour le champ du nom')
     } else {
+        //remove error when it's ok
         removeError(1)
     }
 
-    //Tester email
-
+    //Select email element and value
     const email = document.getElementById('email')
     const emailValue = email.value
+    //Create regex to control email
     const emailRegex = new RegExp("[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+")
 
+    //Check value
     if(emailRegex.test(emailValue) === false) {
-
-        errorMessage(2,'email pas ok')
-
+        //error message
+        isValid = false
+        showErrorMessage(2,'Veuillez entrer un email valide')
     } else {
+        //remove error when it's ok
         removeError(2)
     }
 
-    //tester birthdate
-
+    //Select birthdate element and value
     const birthdate = document.getElementById('birthdate')
     const birthdateValue = birthdate.value
 
+    // Check value
     if(birthdateValue === '') {
-        
-        errorMessage(3,'date de naissance pas ok')
-
+        //error message
+        isValid = false
+        showErrorMessage(3,'Vous devez entrer votre date de naissance')
     } else {
-        formData[3].removeAttribute('data-error')
-        formData[3].setAttribute('data-error-visible', 'false')
+        //remove error when it's ok
+        removeError(3)
     }
 
-    //tester tournoi participer
-
+    //Select quantityTournament element and value
     const quantityTournament = document.getElementById('quantity')
     const quantityTournamentValue = quantityTournament.value
 
+    //Check Value
     if(quantityTournamentValue === '') {
-        
-        errorMessage(4,'nbr tournoi pas ok')
-
+        //error message
+        isValid = false
+        showErrorMessage(4,'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez')
     } else {
-        formData[4].removeAttribute('data-error')
-        formData[4].setAttribute('data-error-visible', 'false')
+        //remove error when it's ok
+        removeError(4)
     }
 
-    //tester localisation tournoi
-
+    //Select location
     const tournamentLocation = document.querySelectorAll('.checkbox-input[type="radio"]')
 
-
+    //Create variable which indicate that none input is checked
     let isChecked = false
+
+    //loop in the table to see if a input is checked
     for(let i = 0; i < tournamentLocation.length; i++){
-        
         if(tournamentLocation[i].checked) {
             isChecked = true
-            console.log('ischecked')
             break
         }
     }
 
+    //if none input is checked, add error message
     if(isChecked === false) {
-        let formData = document.querySelectorAll('.formData')
-        formData[5].setAttribute('data-error', 'tournoi participe pas valide')
-        formData[5].setAttribute('data-error-visible', 'true')
         isValid = false
+        showErrorMessage(5, 'Vous devez choisir une option')
     }
 
-    console.log('continue')
-   
-    //tester acceptation conditions
-
+    //Select cgu element
     const cgu = document.querySelectorAll('.checkbox-input[type="checkbox"]')
 
     if(cgu[0].checked) {
-        isChecked = true
-        console.log('ok')
+        isChecked = true      
     } else {
-        let formData = document.querySelectorAll('.formData')
-        formData[6].setAttribute('data-error', 'cocher case')
-        formData[6].setAttribute('data-error-visible', 'true')
         isValid = false
+        showErrorMessage(6, 'Vous devez vérifier que vous acceptez les termes et conditions.')
     }
 
-
+    //After checking all inputs, if form is valid
     if (isValid === true) {
+        //call the function confirmeForm with the registration message
         confirmeForm()
     }
-
+    console.log(nameValue, lastNameValue, emailValue, birthdateValue, quantityTournamentValue, cgu[0].checked)
     return isValid
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //init the function
 closeForm(document.querySelector('.close'))
-
-//validateForm()
