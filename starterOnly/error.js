@@ -1,8 +1,7 @@
 // Function show error message
 function showErrorMessage(element,message) {
-
     //Select element
-    let formData = element.closest('.formData')
+    let formData = element.closest(".formData")
 
     //Set attribute in the element and add message if the form is not valid
     formData.setAttribute('data-error', message)
@@ -11,7 +10,6 @@ function showErrorMessage(element,message) {
 
 // Function remove error message
 function removeError(element) {
-    
     //Select element
     let formData = element.closest('.formData')
 
