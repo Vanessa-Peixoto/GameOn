@@ -1,7 +1,6 @@
 
 // Function to close the form
 function closeForm(btn) {
-
     //Select elements
     let closeModal = document.querySelector('.bground')
 
@@ -35,6 +34,7 @@ function validate() {
     const location = document.querySelectorAll('.checkbox-input[type="radio"]')
     checkLocation('Vous devez choisir une option')
 
+    //create variable which will retrieve the location value
     let selectLocation = ''
     for(let i = 0; i<location.length; i++){
         if(location[i].checked === true){
@@ -52,14 +52,18 @@ function validate() {
         }
     }
 
+    //create variable which confirm the form is valid
     let formData = document.querySelectorAll(".formData")
     for(let i=0; i<formData.length; i++) {
+        //if data error exist, the form is not valid
         if(formData[i].getAttribute('data-error-visible') === 'true') {
             return false
         }
     }
+    //call the function when the form is valid
     confirmeForm()
 
+    //create data object with each value of the form
     const data = {
         firstname: firstname.value,
         lastname: lastname.value,

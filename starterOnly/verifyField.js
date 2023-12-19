@@ -85,13 +85,17 @@ function checkDate(element, message) {
     return isVerify
 }
 
+//Function which check if location input is checked
 function checkLocation(message) {
+    //create variable indicate the input is not checked
     let isChecked = false
 
+    //Select element
     const tournamentLocation = document.querySelectorAll('.checkbox-input[type="radio"]')
 
     for(let i = 0; i<tournamentLocation.length; i++) {
         if(tournamentLocation[i].checked){
+            //if input checked, remove the error message
             isChecked = true
             removeError(tournamentLocation[0])
             break
@@ -104,10 +108,9 @@ function checkLocation(message) {
     return isChecked
 }
 
+//Function which check if cgu input is checked
 function checkCgu(message) {
-
     let isChecked = false
-
     const cgu = document.querySelectorAll('.checkbox-input[type="checkbox"]')
 
     if(cgu[0].checked) {
@@ -118,11 +121,5 @@ function checkCgu(message) {
     }
     return isChecked
 }
-
-
-
-
-
-
 
 verifyFields()

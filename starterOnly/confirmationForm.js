@@ -18,8 +18,8 @@ function confirmeForm() {
 function getSuccessFullHTMLMessage() {
     //Create new div with registration message
     const div = `<span class="close"></span>
-                <div class="modal-body">
-                    <p>Merci pour votre inscription</p>
+                <div class="modal-body modal-confirm">
+                    <p class ='confirm-form'>Merci pour votre inscription</p>
                     <input
                         class="btn-submit"
                         type="submit"
