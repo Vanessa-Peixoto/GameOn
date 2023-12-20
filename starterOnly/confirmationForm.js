@@ -1,5 +1,5 @@
 // Function to confirmate the form
-function confirmeForm() {
+function confirmForm() {
     //Select element
     const modal = document.querySelector('.content')
 
@@ -79,7 +79,7 @@ function getInitialForm() {
                     <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                     <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 </div>
-                <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+                <label class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                 <div class="formData">
                     <input
                         class="checkbox-input"

@@ -1,4 +1,3 @@
-
 // Function to close the form
 function closeForm(btn) {
     //Select elements
@@ -17,22 +16,22 @@ function validate() {
     //Select element
     const firstname = document.getElementById('first')
     //Call the function which check the field
-    checkName(firstname, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.')
-
+    validateField(firstname, checkNameValue, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.')
+    
     const lastname = document.getElementById('last')
-    checkName(lastname, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.')
+    validateField(lastname, checkNameValue, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.')
 
     const email = document.getElementById('email')
-    checkEmail(email, 'Veuillez entrer un email valide.')
+    validateField(email, checkEmailValue, 'Veuillez entrer un email valide.')
 
     const birthdate = document.getElementById('birthdate')
-    checkDate(birthdate, 'Vous devez entrer votre date de naissance.')
+    validateField(birthdate, checkDateValue, 'Vous devez entrer votre date de naissance.')
 
     const quantityTournament = document.getElementById('quantity')
-    checkDate(quantityTournament, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
+    validateField(quantityTournament, checkDateValue, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
 
     const location = document.querySelectorAll('.checkbox-input[type="radio"]')
-    checkLocation('Vous devez choisir une option')
+    validateField(location, checkLocationValue, 'Vous devez choisir une option')
 
     //create variable which will retrieve the location value
     let selectLocation = ''
@@ -43,7 +42,7 @@ function validate() {
     }
 
     const cgu = document.querySelectorAll('.checkbox-input[type="checkbox"]')
-    checkCgu('Vous devez vérifier que vous acceptez les termes et conditions.')
+    validateField(cgu, checkCguValue, 'Vous devez vérifier que vous acceptez les termes et conditions.')
     
     let selectCgu = ''
     for(let i = 0; i<cgu.length; i++){
@@ -61,7 +60,7 @@ function validate() {
         }
     }
     //call the function when the form is valid
-    confirmeForm()
+    confirmForm()
 
     //create data object with each value of the form
     const data = {
