@@ -167,8 +167,8 @@ function getInitialForm() {
                 value="C'est parti"/>
             </form>
         </div>
-    </div>` 
-    
+    </div>`
+
     //Select element
     let modal = document.querySelector('.content')
 

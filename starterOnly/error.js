@@ -1,5 +1,5 @@
 // Function show error message
-function showErrorMessage(element,message) {
+function showErrorMessage(element, message) {
     //Select element
     let formData = element.closest(".formData")
 

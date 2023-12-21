@@ -32,11 +32,13 @@ function verifyFields() {
 
 //Function which check value in name field
 function checkNameValue(element) {
+    //condition if element is not empty and >2
     return element.value !== '' && element.value.length >= 2
 }
 
 //Function which check value in email field
 function checkEmailValue(element) {
+    //new regex to verify the email
     const emailRegex = new RegExp("[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+");
     return emailRegex.test(element.value);
 }
@@ -63,19 +65,25 @@ function checkCguValue(cgu) {
     return cgu[0].checked;
 }
 
+//Function that checks if element is valid and add show/remove an error message
 function validateField(element, validationFunction, message) {
+    //the field is validated by default
     let isVerified = true;
+    //create variable for the element when it's an array
     const uniqueElement = element.length !== undefined ? element[0] : null;
 
+    //if function which check element is false
     if (!validationFunction(element)) {
         isVerified = false
+        //show the error message
         showErrorMessage(uniqueElement ?? element, message)
     } else {
+        //when it's ok, remove the error
         removeError(uniqueElement ?? element)
     }
+    //get field status
     return isVerified
 }
-
 
 
 verifyFields()

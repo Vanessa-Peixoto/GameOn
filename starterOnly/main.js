@@ -12,12 +12,11 @@ function closeForm(btn) {
 
 //Function validate form
 function validate() {
-  
     //Select element
     const firstname = document.getElementById('first')
     //Call the function which check the field
     validateField(firstname, checkNameValue, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.')
-    
+
     const lastname = document.getElementById('last')
     validateField(lastname, checkNameValue, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.')
 
@@ -35,27 +34,27 @@ function validate() {
 
     //create variable which will retrieve the location value
     let selectLocation = ''
-    for(let i = 0; i<location.length; i++){
-        if(location[i].checked === true){
+    for (let i = 0; i < location.length; i++) {
+        if (location[i].checked === true) {
             selectLocation = location[i].value
         }
     }
 
     const cgu = document.querySelectorAll('.checkbox-input[type="checkbox"]')
     validateField(cgu, checkCguValue, 'Vous devez vérifier que vous acceptez les termes et conditions.')
-    
+
     let selectCgu = ''
-    for(let i = 0; i<cgu.length; i++){
-        if(cgu[i].checked === true){
+    for (let i = 0; i < cgu.length; i++) {
+        if (cgu[i].checked === true) {
             selectCgu = cgu[i].value
         }
     }
 
     //create variable which confirm the form is valid
     let formData = document.querySelectorAll(".formData")
-    for(let i=0; i<formData.length; i++) {
+    for (let i = 0; i < formData.length; i++) {
         //if data error exist, the form is not valid
-        if(formData[i].getAttribute('data-error-visible') === 'true') {
+        if (formData[i].getAttribute('data-error-visible') === 'true') {
             return false
         }
     }
