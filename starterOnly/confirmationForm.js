@@ -1,4 +1,6 @@
-// Function to confirmate the form
+/**
+ * @description Function to confirmate the form
+ */
 function confirmForm() {
     //Select element
     const modal = document.querySelector('.content')
@@ -14,7 +16,10 @@ function confirmForm() {
     initialForm()
 }
 
-//Function create registration message
+/**
+ * @description Function create registration message
+ * @returns html elements
+ */
 function getSuccessFullHTMLMessage() {
     //Create new div with registration message
     const div = `<span class="close"></span>
@@ -32,7 +37,10 @@ function getSuccessFullHTMLMessage() {
     return div
 }
 
-//Function create initial form
+/**
+ * @description Function create initial form
+ * @returns html elements
+ */
 function getInitialForm() {
     //Create new div with the init form
     const div = `
@@ -182,7 +190,9 @@ function getInitialForm() {
     return div
 }
 
-//Function reset form after registration
+/**
+ * @description Function reset form after registration
+ */
 function initialForm() {
     //Select element
     let btnSubscribe = document.querySelector('.btn-signup')

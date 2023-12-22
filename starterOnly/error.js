@@ -1,4 +1,8 @@
-// Function show error message
+/**
+ * @description Function show error message
+ * @param {*} element 
+ * @param {string} message 
+ */
 function showErrorMessage(element, message) {
     //Select element
     let formData = element.closest(".formData")
@@ -8,7 +12,10 @@ function showErrorMessage(element, message) {
     formData.setAttribute('data-error-visible', 'true')
 }
 
-// Function remove error message
+/**
+ * @description Function remove error message
+ * @param {*} element 
+ */
 function removeError(element) {
     //Select element
     let formData = element.closest('.formData')

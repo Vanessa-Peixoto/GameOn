@@ -1,4 +1,7 @@
-// Function to close the form
+/**
+ * @description Function to close the form
+ * @param {*} btn 
+ */
 function closeForm(btn) {
     //Select elements
     let closeModal = document.querySelector('.bground')
@@ -10,7 +13,10 @@ function closeForm(btn) {
     })
 }
 
-//Function validate form
+/**
+ * @description Function validate form
+ * @returns boolean
+ */
 function validate() {
     //Select element
     const firstname = document.getElementById('first')

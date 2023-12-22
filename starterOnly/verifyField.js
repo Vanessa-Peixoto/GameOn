@@ -1,4 +1,6 @@
-//Function which verify field with the listener change
+/**
+ * @description Function which verify field with the listener change
+ */
 function verifyFields() {
     //Select elements
     const firstname = document.getElementById('first')
@@ -30,25 +32,41 @@ function verifyFields() {
     })
 }
 
-//Function which check value in name field
+/**
+ * @description Function which check value in name field
+ * @param {*} element 
+ * @returns boolean
+ */
 function checkNameValue(element) {
     //condition if element is not empty and >2
     return element.value !== '' && element.value.length >= 2
 }
 
-//Function which check value in email field
+/**
+ * @description Function which check value in email field
+ * @param {*} element 
+ * @returns boolean
+ */
 function checkEmailValue(element) {
     //new regex to verify the email
     const emailRegex = new RegExp("[a-zA-Z.-_0-9]+@[a-zA-Z.-_0-9]+\\.[a-zA-Z.-_]+");
     return emailRegex.test(element.value);
 }
 
-//Function which check value in birthdate and tournament field
+/**
+ * @description Function which check value in birthdate and tournament field
+ * @param {*} dateElement 
+ * @returns boolean
+ */
 function checkDateValue(dateElement) {
     return dateElement.value !== ''
 }
 
-//Function which check if location input is checked
+/**
+ * @description Function which check if location input is checked
+ * @param {*} tournamentLocation 
+ * @returns boolean
+ */
 function checkLocationValue(tournamentLocation) {
     let isChecked = false;
     for (let i = 0; i < tournamentLocation.length; i++) {
@@ -60,12 +78,22 @@ function checkLocationValue(tournamentLocation) {
     return isChecked;
 }
 
-//Function which check if cgu input is checked
+/**
+ * @description Function which check if cgu input is checked
+ * @param {*} cgu 
+ * @returns boolean
+ */
 function checkCguValue(cgu) {
     return cgu[0].checked;
 }
 
-//Function that checks if element is valid and add show/remove an error message
+/**
+ * @description Function that checks if element is valid and add show/remove an error message
+ * @param {*} element 
+ * @param {function} validationFunction 
+ * @param {string} message 
+ * @returns boolean
+ */
 function validateField(element, validationFunction, message) {
     //the field is validated by default
     let isVerified = true;
