@@ -33,7 +33,7 @@ function validate() {
     validateField(birthdate, checkDateValue, 'Vous devez entrer votre date de naissance.')
 
     const quantityTournament = document.getElementById('quantity')
-    validateField(quantityTournament, checkDateValue, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
+    validateField(quantityTournament, checkQuantityValue, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
 
     const location = document.querySelectorAll('.checkbox-input[type="radio"]')
     validateField(location, checkLocationValue, 'Vous devez choisir une option')

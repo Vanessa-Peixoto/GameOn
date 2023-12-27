@@ -28,7 +28,7 @@ function verifyFields() {
     })
 
     quantityTournament.addEventListener('change', (e) => {
-        validateField(e.target, checkDateValue, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
+        validateField(e.target, checkQuantityValue, 'Veuillez indiquer le nombre de tournoi auquel vous avez déjà participez.')
     })
 }
 
@@ -39,7 +39,8 @@ function verifyFields() {
  */
 function checkNameValue(element) {
     //condition if element is not empty and >2
-    return element.value !== '' && element.value.length >= 2
+    const nameRegex = new RegExp('^[a-zA-Z]+$');
+    return element.value !== '' && element.value.length >= 2 && nameRegex.test(element.value);
 }
 
 /**
@@ -54,12 +55,21 @@ function checkEmailValue(element) {
 }
 
 /**
- * @description Function which check value in birthdate and tournament field
+ * @description Function which check value in birthdate
  * @param {*} dateElement 
  * @returns boolean
  */
 function checkDateValue(dateElement) {
     return dateElement.value !== ''
+}
+
+/**
+ * @description Function which check value in quantityTournament field
+ * @param {*} element 
+ * @returns boolean
+ */
+function checkQuantityValue(element) {
+    return element.value > 0 && element.value < 99
 }
 
 /**
